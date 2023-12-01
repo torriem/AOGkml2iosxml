@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import isoxml
 import bs4
 
@@ -44,6 +46,7 @@ class KML2ISOXML(isoxml.ISOXML):
 
 if __name__ == '__main__':
     import argparse
+    import os
 
     argparser = argparse.ArgumentParser(prog='kml2isoxml.py', 
                                         description='This script converts a single AgOpenGPS Field.kml file to ISOXML format, converting only the AB Lines and Boundaries') 
@@ -61,6 +64,8 @@ if __name__ == '__main__':
         args.farm = 'AgOpenGPSFarm'
     if not args.operator:
         args.operator = 'AgOpenGPS'
+
+    os.makedirs(args.outputdir,exist_ok=True)
 
     k = KML2ISOXML(args.operator, args.farm)
     kml = open(args.kml_file, 'r').read()
