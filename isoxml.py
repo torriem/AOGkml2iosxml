@@ -86,7 +86,7 @@ class ISOXML(object):
                 if which_field is not None and not field in which_field:
                     # only output one field
                     continue
-                print ("ISOXML Processing field %s" % field)
+                #print ("ISOXML Processing field %s" % field)
                 pfd.write('\t <PFD A="PFD-%d" C="%s" D="0" E="CTR-0" F="FRM-0" >\r\n' % (pfd_id, field))
                 for line in self.fields[field]:
                     pfd.write(line)
